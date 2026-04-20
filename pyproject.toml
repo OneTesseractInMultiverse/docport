@@ -1,0 +1,104 @@
+[build-system]
+requires = ["uv_build>=0.10.9,<0.11.0"]
+build-backend = "uv_build"
+
+[project]
+name = "docport"
+version = "1.0.0"
+description = "A typed Python library for building document-store models, queries, and MongoDB-backed repositories."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Pedro Guzmán" }]
+keywords = [
+  "hexagonal-architecture",
+  "mongodb",
+  "repository",
+  "document-store",
+  "ports-and-adapters",
+  "pydantic",
+  "asyncio",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Database",
+  "Topic :: Software Development :: Libraries",
+  "Typing :: Typed",
+]
+dependencies = [
+  "pydantic>=2.11.0",
+  "pymongo>=4.13.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/OneTesseractInMultiverse/DocPort"
+Repository = "https://github.com/OneTesseractInMultiverse/DocPort"
+Issues = "https://github.com/OneTesseractInMultiverse/DocPort/issues"
+MoleQL = "https://github.com/OneTesseractInMultiverse/moleql"
+
+[dependency-groups]
+dev = [
+  "coverage>=7.13.0",
+  "mongomock>=4.3.0",
+  "mypy>=1.19.1",
+  "pre-commit>=4.5.1",
+  "pyinstrument>=5.1.0",
+  "pytest>=9.0.2",
+  "pytest-asyncio>=1.1.0",
+  "pytest-benchmark>=5.2.0",
+  "pytest-cov>=7.0.0",
+  "ruff>=0.15.7",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "I", "UP", "PERF"]
+ignore = ["UP046"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["docport"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+files = ["src/docport"]
+python_version = "3.12"
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+show_error_codes = true
+pretty = true
+
+[tool.coverage.run]
+source = ["docport"]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+precision = 2
+fail_under = 100
+show_missing = true
+skip_empty = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = [
+  "--strict-markers",
+  "--strict-config",
+]
+asyncio_mode = "auto"

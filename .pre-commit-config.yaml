@@ -1,0 +1,29 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: Ruff check
+        entry: uv run ruff check src tests
+        language: system
+        pass_filenames: false
+
+      - id: ruff-format
+        name: Ruff format
+        entry: uv run ruff format --check src tests
+        language: system
+        pass_filenames: false
+
+      - id: mypy
+        name: Mypy type checking
+        entry: uv run mypy src
+        language: system
+        pass_filenames: false
+
+      - id: pytest-coverage
+        name: Pytest with coverage
+        entry: uv run pytest --cov=docport --cov-branch
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages:
+          - pre-push

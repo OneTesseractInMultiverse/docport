@@ -1,0 +1,69 @@
+# macOS
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# Python cache and analysis
+__pycache__/
+*.py[cod]
+*$py.class
+.cache/
+.hypothesis/
+.mypy_cache/
+.pyre/
+.pytest_cache/
+.pytype/
+.ruff_cache/
+
+# Virtual environments and local credentials
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+.envrc
+*.local
+.pypirc
+
+# UV
+.uv-cache/
+
+# Coverage and benchmark output
+.benchmarks/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+pytestdebug.log
+
+# Python build output
+.Python
+.eggs/
+*.egg
+*.egg-info/
+build/
+develop-eggs/
+dist/
+downloads/
+MANIFEST
+pip-wheel-metadata/
+share/python-wheels/
+site/
+wheels/
+
+# Test runners
+.nox/
+.tox/
+
+# Docs
+docs/_build/
+
+# Local database state
+mongo/
